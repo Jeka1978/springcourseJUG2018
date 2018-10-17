@@ -7,37 +7,11 @@
     <context:component-scan base-package="quoters"/>
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean class="quoters.IntegerFactory"/>
 
-    <bean class="quoters.bpp.InjectRandomIntAnnotationBeanPotProcessor"/>
-    <bean class="quoters.bfpp.BeanDefinitionAnalyzerBeanFactoryPostProcessor"/>
 
-    <bean id="message" class="java.lang.String">
-        <constructor-arg value="Trust me"/>
-    </bean>
 
-    <bean id="talkingRobot" class="quoters.TalkingRobot">
 
-        <property name="quoters">
-            <list>
-                <ref bean="shakespearQuoter"/>
-                <ref bean="terminator"/>
-            </list>
-        </property>
-    </bean>
-    <bean id="shakespearQuoter" class="quoters.ShakespearQuoter">
-        <property name="message" value="${shake}"/>
-    </bean>
 
-    <bean id="terminator" class="quoters.TerminatorQuoter" destroy-method="killAll">
-        <property name="messages">
-            <list>
-                <value>I'll be back</value>
-                <ref bean="message"/>
-                <value>Astalavista baby</value>
-            </list>
-        </property>
-    </bean>
 </beans>
 
 

@@ -4,5 +4,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="shakespearQuoter" class="quoters.ShakespearQuoter">
+        <property name="message" value="2 b || ! 2 b"/>
+    </bean>
 
+    <bean id="terminator" class="quoters.TerminatorQuoter">
+        <property name="messages">
+            <list>
+                <value>I'll be back</value>
+                <value>Astalavista baby</value>
+            </list>
+        </property>
+    </bean>
 </beans>

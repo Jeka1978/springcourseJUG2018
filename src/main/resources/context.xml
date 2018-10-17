@@ -4,8 +4,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:annotation-config/>
-    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <context:component-scan base-package="quoters"/>
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean class="quoters.IntegerFactory"/>
+
+    <bean class="quoters.bpp.InjectRandomIntAnnotationBeanPotProcessor"/>
+    <bean class="quoters.bfpp.BeanDefinitionAnalyzerBeanFactoryPostProcessor"/>
 
     <bean id="message" class="java.lang.String">
         <constructor-arg value="Trust me"/>
@@ -21,10 +26,10 @@
         </property>
     </bean>
     <bean id="shakespearQuoter" class="quoters.ShakespearQuoter">
-        <property name="message" value="2 b || ! 2 b"/>
+        <property name="message" value="${shake}"/>
     </bean>
 
-    <bean id="terminator" class="quoters.TerminatorQuoter">
+    <bean id="terminator" class="quoters.TerminatorQuoter" destroy-method="killAll">
         <property name="messages">
             <list>
                 <value>I'll be back</value>
@@ -34,3 +39,5 @@
         </property>
     </bean>
 </beans>
+
+

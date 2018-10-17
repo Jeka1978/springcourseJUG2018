@@ -8,9 +8,7 @@ public class IRobot {
     private Cleaner cleaner = new CleanerImpl();
 
 
-    public void clean(){
-
-
+    public void clean() {
         speaker.speak("Начал работать");
         cleaner.clean();
         speaker.speak("Закончил работать");

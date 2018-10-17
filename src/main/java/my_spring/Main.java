@@ -9,8 +9,10 @@ public class Main {
     @SneakyThrows
     public static void main(String[] args) {
 //       ObjectFactory.getInstance().createObject(IRobot.class).clean();
-        JugRuService jugRuService = ObjectFactory.getInstance().createObject(JugRuService.class);
+
+        JugRuServiceImpl jugRuService = ObjectFactory.getInstance().createObject(JugRuServiceImpl.class);
         jugRuService.conference();
         jugRuService.afterParty();
+        System.out.println(jugRuService.getClass());
     }
 }

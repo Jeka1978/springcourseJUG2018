@@ -3,13 +3,14 @@ package my_spring;
 /**
  * @author Evgeny Borisov
  */
-public class JugRuServiceImpl implements JugRuService {
-    @Override
+@Benchmark
+public class JugRuServiceImpl {
+//    @Override
     public void conference() {
         System.out.println("Joker the BEST!!!");
     }
 
-    @Override
+//    @Override
     @Benchmark
     public void afterParty() {
         System.out.println("приходите, будет сюрприз");

@@ -1,6 +1,7 @@
 package quoters;
 
 import lombok.Setter;
+import my_spring.InjectRandomInt;
 
 /**
  * @author Evgeny Borisov
@@ -8,8 +9,13 @@ import lombok.Setter;
 @Setter
 public class ShakespearQuoter implements Quoter {
     private String message;
+    @InjectRandomInt(min = 2, max = 6)
+    private int repeat;
+
     @Override
     public void sayQuote() {
-        System.out.println(message);
+        for (int i = 0; i < repeat; i++) {
+            System.out.println(message);
+        }
     }
 }

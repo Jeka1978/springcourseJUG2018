@@ -1,10 +1,13 @@
 package my_spring;
 
+import lombok.SneakyThrows;
+
 /**
  * @author Evgeny Borisov
  */
 public class Main {
+    @SneakyThrows
     public static void main(String[] args) {
-        new IRobot().clean();
+       ObjectFactory.getInstance().createObject(IRobot.class).clean();
     }
 }

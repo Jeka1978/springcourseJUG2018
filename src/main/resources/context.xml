@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="talkingRobot" class="quoters.TalkingRobot" init-method="talk">
+
+        <property name="quoters">
+            <list>
+                <ref bean="shakespearQuoter"/>
+                <ref bean="terminator"/>
+            </list>
+        </property>
+    </bean>
     <bean id="shakespearQuoter" class="quoters.ShakespearQuoter">
         <property name="message" value="2 b || ! 2 b"/>
     </bean>

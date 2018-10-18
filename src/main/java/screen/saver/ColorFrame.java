@@ -13,7 +13,7 @@ import java.util.Random;
  * @author Evgeny Borisov
  */
 @Component
-public abstract class ColorFrame extends JFrame {
+public class ColorFrame extends JFrame {
     Random random = new Random();
 
     @Autowired
@@ -21,24 +21,17 @@ public abstract class ColorFrame extends JFrame {
 
     @PostConstruct
     public void init(){
+        System.out.println(color);
         setSize(200,200);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
     public void move() {
-        color = getColorBean();
         setLocation(random.nextInt(1500),random.nextInt(800));
         getContentPane().setBackground(color);
         repaint();
     }
-
-    @Autowired
-    public abstract Color getColorBean();
-
-
-
-
 
 
 

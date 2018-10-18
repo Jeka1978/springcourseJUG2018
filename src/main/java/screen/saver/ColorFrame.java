@@ -2,8 +2,10 @@ package screen.saver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.test.annotation.Rollback;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -35,6 +37,7 @@ public class ColorFrame extends JFrame {
     }
 
     @Lookup
+    @Bean
     protected  Color getColorBean() {
         return null;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class TalkingRobotImpl implements TalkingRobot {
 
-    @MediaType(MediaTypeEnum.FILM)
+    @Autowired
     private List<Quoter> quoters = Arrays.asList(() -> System.out.println("THis is default"));
 
     @Override

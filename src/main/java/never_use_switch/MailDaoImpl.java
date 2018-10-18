@@ -13,6 +13,6 @@ public class MailDaoImpl implements MailDao {
 
     @Override
     public int getMailCode() {
-        return random.nextInt(2) + 1;
+        return random.nextInt(3) + 1;
     }
 }

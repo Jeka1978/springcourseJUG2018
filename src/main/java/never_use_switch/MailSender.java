@@ -6,26 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Evgeny Borisov
  */
 @Service
 @RequiredArgsConstructor
 public class MailSender {
-    private final MailDao mailDao;
+    @Autowired
+    private MailDao mailDao;
+
+    @Autowired
+    private Map<String, MailGenerator> map;
+
 
     @Scheduled(fixedDelay = 1000)
     public void sendMail() {
-        int mailCode = mailDao.getMailCode();
-        if (mailCode == 1) {
-            //50 lines of code
-            System.out.println("Welcome mail was sent");
-        } else if(mailCode==2) {
-            System.out.println("email callback sent");
-            //80 lines of code
-        }
+        String mailCode = String.valueOf(mailDao.getMailCode());
+        MailGenerator mailGenerator = map.getOrDefault(mailCode, () -> {
+            throw new RuntimeException(mailCode + " not supported yet");
+        });
+        String html = mailGenerator.generateMail();
+        send(html);
+
+    }
+
+    private void send(String html) {
+        System.out.println("sending..." + html);
     }
 }
+
+
+
+
+
+
 
 
 
